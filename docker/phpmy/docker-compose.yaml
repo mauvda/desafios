@@ -1,43 +1,25 @@
-version: '3.8'
+version: '3.1'
 
 volumes:
   maria_vol:
-
-networks:
-  maria_net:
-    driver: bridge
-
+  
 services:
   mariadb:
+    
     image: mariadb:10.9.6
 
     volumes:
       - maria_vol:/data/db
-    
-    networks:
-      - maria_net
-
-    ports:
-      - 3306:3306
 
     environment:
       MYSQL_ROOT_PASSWORD: senha123
-      MYSQL_DATABASE: mariadb1
-      MYSQL_USER: usuario123
-      MYSQL_PASSWORD: senha123
-  phpmy:
-    image: phpmyadmin:fpm
 
-    networks:
-      - maria_net
-
+  phpmyadmin:
+    
+    image: phpmyadmin:5.2.1
+    
     ports:
       - 8080:80
     
-    depends_on:
-      - mariadb
-
     environment:
-      - PMA_HOST= mariadb # ://root:senha123@mariadb:3306
-      - PMA_USER=root
-      - PMA_PASSWORD=senha123
+      - PMA_HOST=mariadb
