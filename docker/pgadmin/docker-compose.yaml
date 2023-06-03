@@ -1,0 +1,29 @@
+version: '3.8'
+
+volumes:
+  postgres_vol:
+
+services:
+  postgres:
+    image: postgres:13.11
+
+    volumes:
+      - postgres_vol:/data/db
+    
+    environment:
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_USER: user
+  
+  pgadmin:
+    image: dpage/pgadmin4:4.23
+
+    ports:
+     - 8080:80
+    
+    depends_on:
+      - postgres
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gpgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: Jloth@5465
+      PGADMIN_LISTEN_PORT: 80
