@@ -1,0 +1,14 @@
+version: '3.8'
+
+volumes:
+  worddb:
+
+services:
+  wordpress:
+    image: wordpress
+
+    ports:
+      - 8080:80
+    
+    volumes:
+      - worddb:/http/html
