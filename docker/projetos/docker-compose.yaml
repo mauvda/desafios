@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  conversao-temperatura:
+    image: mauriciolamonatto/conversao-temperatura:v1
+
+    ports:
+      - 8080:8080
+
+    container_name: conversao-temperatura
+
+  conversao-distancia:
+    image: mauriciolamonatto/conversao-distancia:v1
+
+    ports:
+      - 5000:5000
+    
+  conversao-peso:
+    image: mauriciolamonatto/conversao-peso:v1
+
+    ports:
+      - 80:80
